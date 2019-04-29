@@ -1,0 +1,36 @@
+$fontMain: 'Open Sans', sans-serif;
+
+$smallTextWhiteShadow: 0 0 1px rgba(255,255,255,0.8),
+                       0 0 2px rgba(255,255,255,0.8),
+                       0 0 3px rgba(255,255,255,0.8);
+
+$bigTextWhiteShadow: 0 0 10px rgba(255,255,255,0.8),
+                     0 0 20px rgba(255,255,255,0.8),
+                     0 0 40px rgba(255,255,255,0.8),
+                     0 0 80px rgba(255,255,255,0.8),
+                     0 0 160px rgba(255,255,255,0.8);
+
+$lightMenu: rgb(243, 243, 243);
+$lightBackground: rgb(248,248,248);
+$lightSection: rgb(255,255,255);
+$fontColor: rgb(29, 41, 65);
+$fontMuted: rgb(150,150,150);
+
+$alphaGray: rgba(180,180,180,0.4);
+
+$colorSpecial: rgb(21,124,255);
+$colorSpecialAlpha: rgba(21,124,255,0.5);
+
+@mixin strokeText($color) {
+  text-stroke: 1px $color;
+  -webkit-text-stroke: 1px $color;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+$xl: "screen and (max-width: 1200px)";
+$lg: "screen and (max-width: 992px)";
+$md: "screen and (max-width: 768px)";
+$sm: "screen and (max-width: 576px)";
+$xs: "screen and (max-width: 476px)";
+$xxs: "screen and (max-width: 300px)";
