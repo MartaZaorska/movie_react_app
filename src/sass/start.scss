@@ -18,7 +18,7 @@
 
 .start_content {
   position: absolute;
-  bottom: 150px;
+  bottom: 200px;
   left: 40px;
   padding: 10px;
 
@@ -29,14 +29,13 @@
   mix-blend-mode: color-dodge;
 
   @media #{$md}{
-    bottom: 100px;
     left: 10px;
   }
 
   @media #{$sm}{
     padding: 5px;
     left: 5px;
-    bottom: 120px;
+    bottom: 170px;
     border-left: none;
   }
 }
@@ -93,7 +92,7 @@ p.start_date, div.start_genres {
   line-height: 35px;
   z-index: 4;
   position: absolute;
-  bottom: 35px;
+  bottom: 95px;
   left: 50%;
   transform: translateX(-50%);
   transition: all 0.2s;
