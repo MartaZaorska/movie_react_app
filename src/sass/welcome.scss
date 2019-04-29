@@ -1,0 +1,116 @@
+@import 'variables.scss';
+
+.welcome_container {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  background: black;
+  z-index: 15;
+}
+
+.welcome_background {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: url('img/welcome.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  z-index: 1;
+  animation: move_background 8s linear infinite alternate;
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+
+  @media #{$md}{
+    background-size: 250%;
+  }
+}
+
+.welcome_content {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100vw;
+  transform: translateY(-50%);
+  z-index: 2;
+  text-align: center;
+}
+
+h1.welcome_title {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  background: transparent;
+  //text-transform: uppercase;
+  font-size: 6em;
+  font-weight: 700;
+  color: $lightBackground;
+  text-shadow: 1px 1px 1px $fontMuted, 1px 2px 1px $fontMuted, 1px 3px 1px $fontMuted, 1px 4px 1px $fontMuted, 1px 5px 1px $fontMuted, 1px 6px 1px $fontMuted, 1px 7px 1px $fontMuted, 1px 8px 1px $fontMuted, 1px 9px 1px $fontMuted, 1px 10px 1px $fontMuted, 1px 18px 6px rgba(16,16,16,0.4), 1px 22px 10px rgba(16,16,16,0.2), 1px 25px 35px rgba(16,16,16,0.2), 1px 30px 60px rgba(16,16,16,0.2);
+  transition: all 1s;
+  letter-spacing: 1px;
+
+  transition: all 0.4s;
+  transition-delay: 0s;
+  transform: translateY(-50px);
+  opacity: 0;
+
+  @media #{$md}{
+    font-size: 4.2em;
+    min-height: 150px;
+  }
+
+  @media #{$sm}{
+    font-size: 3.5em;
+    min-height: 120px;
+  }
+
+  @media #{$xs}{
+    font-size: 2.8em;
+    min-height: 80px;
+    text-shadow: 1px 1px 1px $fontMuted, 1px 2px 1px $fontMuted, 1px 3px 1px $fontMuted, 1px 4px 1px $fontMuted, 1px 5px 1px $fontMuted, 1px 6px 1px $fontMuted, 1px 7px 1px $fontMuted, 1px 8px 1px $fontMuted, 1px 18px 6px rgba(16,16,16,0.4), 1px 22px 10px rgba(16,16,16,0.2), 1px 25px 35px rgba(16,16,16,0.2), 1px 30px 60px rgba(16,16,16,0.2);
+  }
+}
+
+button.welcome_button {
+  margin-top: 20px;
+  box-shadow: 0px 14px 30px -14px rgba(0, 0, 0, 0.95);
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-family: inherit;
+  background-color: $colorSpecialAlpha;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  a {
+    text-decoration: none;
+    color: $lightMenu;
+  }
+
+  &:hover {
+    background-color: $colorSpecial;
+  }
+
+  transition-property: background-color, opacity, transform;
+  transition-duration: 0.4s, 0.2s, 0.2s;
+  transition-delay: 0s, 0.2s, 0.2s;
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+@keyframes move_background {
+  0% { background-position: 0 0px; }
+  100% { background-position: 0 -400px; } 
+}
+
+.welcome_container.enter {
+ .welcome_title, .welcome_button {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
