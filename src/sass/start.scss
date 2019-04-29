@@ -1,0 +1,107 @@
+@import 'variables.scss';
+
+.start_container {
+  width: 100%;
+  height: 100vh;
+  transition: all 0.4s;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.start_cover {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+}
+
+.start_content {
+  position: absolute;
+  bottom: 150px;
+  left: 40px;
+  padding: 10px;
+
+  border-left: 1px solid gray;
+  overflow: hidden;
+
+  color: rgba(197, 187, 187, 0.712);
+  mix-blend-mode: color-dodge;
+
+  @media #{$md}{
+    bottom: 100px;
+    left: 10px;
+  }
+
+  @media #{$sm}{
+    padding: 5px;
+    left: 5px;
+    bottom: 120px;
+    border-left: none;
+  }
+}
+
+h1.start_title {
+  text-transform: uppercase;
+  font-size: 3em;
+  padding: 10px 5px;
+  letter-spacing: 1px;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  @media #{$md}{
+    font-size: 2.5em;
+    padding: 5px;
+  }
+
+  @media #{$sm}{
+    font-size: 1.7em;
+  }
+}
+
+p.start_date, div.start_genres {
+  font-size: 0.9em;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 10px;
+  span {
+    display: inline-block;
+    padding-right: 20px;
+
+    @media #{$md}{
+      padding-right: 10px;
+    }
+
+    @media #{$sm}{
+      display: block;
+      padding: 2px 0px;
+    }
+  }
+}
+
+.start_button {
+  display: block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  color: #eee;
+  text-align: center;
+  line-height: 35px;
+  z-index: 4;
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.2s;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.377);
+    background-blend-mode: overlay;
+  }
+}

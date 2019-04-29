@@ -14,7 +14,7 @@ function Welcome(){
       <div className="welcome_background"></div>
       <div className="welcome_content">
         <h1 className="welcome_title">MOVIE APP</h1>
-        <button className="welcome_button"><Link to="/start">Zaczynamy</Link></button>
+        <Link to="/start" className="welcome_button">Zaczynamy</Link>
       </div>
     </div>
   );
