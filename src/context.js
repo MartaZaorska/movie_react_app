@@ -12,8 +12,22 @@ export function Provider(props){
   const [state, setState] = React.useState({
     startMovie: undefined,
     genresMovie: undefined,
+    resultSearch: undefined,
+    isLoading: false,
+    totalPages: undefined,
+    page: undefined
   });
 
+
+  const searchElements = (type, query, page = 1) => {
+    setState({ ...state, isLoading: true });
+    fetch(`https://api.themoviedb.org/3/search/${type}?api_key=${API_KEY}&language=pl-PL&query=${query}&page=${page}`)
+      .then(res => res.json())
+      .then(data => {
+        setState({ ...state, resultSearch: data.results, totalPages: data.total_pages, page: data.page, isLoading: false });
+      })
+      .catch(err => console.log(err));
+  }
   
   const getStartMovie = () => {
     return new Promise((resolve, reject) => {
@@ -55,7 +69,8 @@ export function Provider(props){
 
   return (
     <Context.Provider value={{
-      ...state
+      ...state,
+      searchElements
     }}>
       {props.children}
     </Context.Provider>

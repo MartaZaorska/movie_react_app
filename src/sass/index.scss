@@ -13,6 +13,10 @@ body {
   font-family: $fontMain;
   background: $lightBackground;
   color: $fontColor;
+
+  @media #{$lg}{
+    font-size: 15px;
+  }
 }
 
 .container {
@@ -24,4 +28,74 @@ body {
 
 button {
   outline: none !important;
+}
+
+
+.menu_icon {
+  display: block;
+  background: transparent;
+  outline: none;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 15px; right: 20px;
+  cursor: pointer;
+  z-index: 14;
+}
+
+.menu_icon span.menu_icon_item {
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-bottom: 4px;
+  background: rgba(155, 153, 153, 0.5);
+  border-radius: 2px;
+  transition: all 0.2s;
+
+  &:nth-child(2){
+    width: 80%;
+  }
+
+  &:nth-child(3){
+    width: 40%;
+  }
+}
+
+.menu_icon:hover span.menu_icon_item {
+  background: $colorSpecial;
+  width: 100%;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
+
+  &:nth-child(1){
+    width: 40%;
+  }
+
+  &:nth-child(2){
+    width: 80%;
+  }
+}
+
+.menu_icon.menu_icon_close span.menu_icon_item {
+  width: 100%;
+
+  &:nth-child(1){
+    transform: rotate(45deg) translateY(4px);
+  }
+  
+  &:nth-child(2){
+    display: none;
+  }
+  
+  &:nth-child(3){
+    transform: rotate(-45deg) translateY(-4px);
+  }
+}
+
+.menu_icon.menu_icon_close:hover span.menu_icon_item {
+  width: 100%;
+}
+
+* {
+  outline: none !important;
+  outline-color: transparent !important;
 }
