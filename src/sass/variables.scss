@@ -18,8 +18,9 @@ $fontMuted: rgb(150,150,150);
 
 $alphaGray: rgba(180,180,180,0.4);
 
-$colorSpecial: rgb(21,124,255);
+$colorSpecial: rgb(21, 124, 255);
 $colorSpecialAlpha: rgba(21,124,255,0.5);
+
 
 @mixin strokeText($color) {
   text-stroke: 1px $color;

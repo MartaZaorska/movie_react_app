@@ -10,13 +10,13 @@ function Welcome(){
   }, []);
 
   return (
-    <div className="welcome_container">
-      <div className="welcome_background"></div>
-      <div className="welcome_content">
+    <article className="welcome_container">
+      <header className="welcome_content">
         <h1 className="welcome_title">MOVIE APP</h1>
         <Link to="/start" className="welcome_button">Zaczynamy</Link>
-      </div>
-    </div>
+      </header>
+      <section className="welcome_background"></section>
+    </article>
   );
 }
 

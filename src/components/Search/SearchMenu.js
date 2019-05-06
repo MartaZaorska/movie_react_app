@@ -15,7 +15,7 @@ function SearchMenu(){
 
   return (
     <React.Fragment>
-      <div className="side_navbar search_side_navbar">
+      <nav className="side_navbar search_side_navbar">
         <ul className="side_navbar_list">
           <li className="list_item title">Wyszukiwarka</li>
           <li className="list_item_link"><Link to="/ranking/movie">Ranking filmów</Link></li>
@@ -25,7 +25,7 @@ function SearchMenu(){
           <li className="list_item_link"><Link to="/extra/favourite">Ulubione</Link></li>
           <li className="list_item_link"><Link to="/extra/want_see">Chcę zobaczyć</Link></li>
         </ul>
-      </div>
+      </nav>
       <i onClick={toggleSideMenu} className="open_side_menu search_open_side_menu fas fa-angle-right"></i>
     </React.Fragment>
   )

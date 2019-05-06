@@ -5,13 +5,17 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
+  outline: none !important;
 }
+
+main, article, section, nav, footer, aside, header { display: block; }
 
 body {
   width: 100%;
   height: auto;
   font-family: $fontMain;
   background: $lightBackground;
+  overflow-x: hidden;
   color: $fontColor;
 
   @media #{$lg}{
@@ -28,6 +32,7 @@ body {
 
 button {
   outline: none !important;
+  font-family: inherit;
 }
 
 
@@ -93,9 +98,4 @@ button {
 
 .menu_icon.menu_icon_close:hover span.menu_icon_item {
   width: 100%;
-}
-
-* {
-  outline: none !important;
-  outline-color: transparent !important;
 }

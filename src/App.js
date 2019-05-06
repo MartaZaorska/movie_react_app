@@ -3,7 +3,8 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Welcome from './components/Welcome';
 import Start from './components/Start';
-import Search from './components/Search/SearchContainer';
+import Search from './components/Search';
+import NowPlaying from './components/NowPlaying';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -31,11 +32,14 @@ function App() {
         <span className="menu_icon_item"></span>
       </button>
       <Navbar closeMenu={() => toggleClassMenu('remove')} />
-      <Switch>
-        <Route exact path="/" component={Welcome} />
-        <Route exact path="/start" component={Start} />
-        <Route exact path="/search/:type_search" component={Search} />
-      </Switch>
+      <main>
+        <Switch>
+          <Route exact path="/" component={Welcome} />
+          <Route exact path="/start" component={Start} />
+          <Route exact path="/search/:type_search" component={Search} />
+          <Route exact path="/now_playing/:type_media" component={NowPlaying} />
+        </Switch>
+      </main>
     </div>
   );
 }

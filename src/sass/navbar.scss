@@ -12,9 +12,7 @@
 
   transform: translateX(-100%);
   opacity: 0;
-  transition-property: transform, opacity;
-  transition: 0.1s, 0.3s;
-  transition-delay: 0s, 0.1s;
+  transition: all 0.3s;
 
   background: #222;
 
@@ -93,12 +91,11 @@ h1.navbar_item_title {
 
   @media screen and (max-height: 530px) and (max-width: 768px){
     display: inline-block;
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
 
   @media screen and (max-height: 530px) and (max-width: 467px){
     position: absolute;
-    font-size: 0.8em;
     left: 65%;
     top: 55%;
     font-size: 1.1em;
@@ -142,7 +139,6 @@ li.navbar_list_item {
     display: inline-block;
     padding: 5px 20px;
     color: black;
-    -webkit-text-stroke: none;
   }
 
   @media #{$xs}{
@@ -170,8 +166,8 @@ li.navbar_list_item a {
   }
 
   @media #{$md}{
-    -webkit-text-stroke: 0px;
     font-size: 0.9em;
+    -webkit-text-stroke: 0px;
     text-stroke: 0px;
     -webkit-text-fill-color: rgba(224, 218, 218, 0.918);
     text-fill-color: rgba(224, 218, 218, 0.918);
@@ -298,7 +294,7 @@ li.navbar_list_item a {
   }
 }
 
-nav.navbar:hover {
+.navbar:hover {
   .serials:hover, .movies:hover, .people:hover, .extra:hover {
     h1.navbar_item_title {
       transform: rotate(-90deg) translate(-155px, 1vw);

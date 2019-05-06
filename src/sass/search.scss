@@ -74,7 +74,6 @@
   font-size: 0.75em;
   margin-right: 10px;
   border-radius: 15px;
-  font-family: inherit;
   text-transform: uppercase;
   font-weight: 700;
   cursor: pointer;
@@ -99,9 +98,10 @@
   }
 }
 
-button.search_button {
+.search_button {
   background: lighten($fontMuted,10);
   outline: none !important;
+  text-transform: uppercase;
   color: $lightBackground;
   font-weight: 700;
   padding: 10px 15px;
@@ -121,6 +121,7 @@ button.search_button {
   font-size: 0.8em;
   color: $fontMuted;
   opacity: 0;
+  padding: 5px;
   transition: all 0.3s;
   &.show_info {
     opacity: 1;
@@ -171,6 +172,9 @@ button.search_button {
   color: $colorSpecial;
 }
 
+
+
+/*--------- ResultItem ------------*/
 
 .result_item {
   width: calc((100%  / 2) - 20px);
@@ -226,6 +230,10 @@ button.search_button {
     color: $colorSpecialAlpha;
   }
 
+  @media #{$sm} {
+    filter: grayscale(0%);
+  }
+
   @media #{$xs}{
     float: none;
     width: 100%;
@@ -246,7 +254,7 @@ button.search_button {
     float: none;
     width: 100%;
     height: auto;
-    padding: 0px 10px 15px 10px;
+    padding: 5px 10px 15px 10px;
   }
 }
 
@@ -301,6 +309,7 @@ button.search_button {
   color: $fontMuted;
   transition: all 0.1s;
   i { padding-left: 1px; transition: all 0.1s; }
+
   &:hover {
     color: $colorSpecial;
   }
@@ -324,6 +333,9 @@ button.search_button {
 
     .result_item_image {
       filter: grayscale(0%);
+      i {
+        color: $lightMenu;
+      }
     }
 
     .result_item_link:hover { color: $fontColor; }

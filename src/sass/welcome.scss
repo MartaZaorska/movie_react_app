@@ -50,12 +50,10 @@ h1.welcome_title {
   height: auto;
   min-height: 180px;
   background: transparent;
-  //text-transform: uppercase;
   font-size: 6em;
   font-weight: 700;
   color: $lightBackground;
   text-shadow: 1px 1px 1px $fontMuted, 1px 2px 1px $fontMuted, 1px 3px 1px $fontMuted, 1px 4px 1px $fontMuted, 1px 5px 1px $fontMuted, 1px 6px 1px $fontMuted, 1px 7px 1px $fontMuted, 1px 8px 1px $fontMuted, 1px 9px 1px $fontMuted, 1px 10px 1px $fontMuted, 1px 18px 6px rgba(16,16,16,0.4), 1px 22px 10px rgba(16,16,16,0.2), 1px 25px 35px rgba(16,16,16,0.2), 1px 30px 60px rgba(16,16,16,0.2);
-  transition: all 1s;
   letter-spacing: 1px;
 
   transition: all 0.4s;
@@ -86,7 +84,6 @@ h1.welcome_title {
   box-shadow: 0px 14px 30px -14px rgba(0, 0, 0, 0.95);
   cursor: pointer;
   letter-spacing: 1px;
-  font-family: inherit;
   background-color: $colorSpecialAlpha;
   padding: 10px 20px;
   border-radius: 10px;
