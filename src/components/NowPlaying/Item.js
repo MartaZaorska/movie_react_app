@@ -19,9 +19,9 @@ function Item(props){
         <section className="item_content">
           <p className="item_date">{ type === 'movie' ? release_date : first_air_date }</p>
           <header>
-            <h1 className="item_title"><Link to={`/realization/${id}`}>{ type === 'movie' ? title : name }</Link></h1>
+            <h1 className="item_title"><Link to={`/realization/${type}/${id}`}>{ type === 'movie' ? title : name }</Link></h1>
           </header>
-          <p className="item_vote">Ocena: <span className="average">{ vote_average === 0 ? '-.-' : vote_average}</span>, ilość głosów: <span className="count">{ vote_count === 0 ? '--' : vote_count }</span></p>
+          <p className="item_vote">Ocena: <span className="average">{ vote_average === 0 ? 'brak oceny' : vote_average}</span>, ilość głosów: <span className="count">{ vote_count === 0 ? 'brak głosów' : vote_count }</span></p>
           <p className="item_overview">{info.length >= 400 ? `${info.substring(0, 318)}...` : info }</p>
         </section>
       </section>

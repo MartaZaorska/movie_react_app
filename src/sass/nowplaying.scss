@@ -1,13 +1,18 @@
 @import 'variables.scss';
 
 .now_playing_container {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  overflow: hidden !important;
+  overflow-x: hidden !important;
+
+  @media #{$md}{
+    position: relative;
+  }
 }
 
+
 .now_playing_button {
-  position: absolute;
+  position: fixed;
   top: 50%;
   right: 0px;
   width: 30px;
@@ -48,7 +53,7 @@
 
 
 .now_playing_item {
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   width: 100%;
@@ -88,7 +93,7 @@ h3.now_playing_title {
   width: calc(100% - 230px);
   padding: 20px;
   position: absolute;
-  bottom: 40px;
+  bottom: 50px;
   left: 0px;
   color: darken($lightMenu, 15);
 
@@ -98,7 +103,7 @@ h3.now_playing_title {
   }
 }
 
-p.item_date {
+.now_playing_item p.item_date {
   font-size: 0.85em;
   font-weight: 300;
   color: $fontMuted;
@@ -106,7 +111,7 @@ p.item_date {
   width: 100%;
 }
 
-h1.item_title {
+.now_playing_item h1.item_title {
   font-size: 2.5em;
   text-transform: uppercase;
   width: 100%;
@@ -127,7 +132,7 @@ h1.item_title {
   }
 }
 
-p.item_vote {
+.now_playing_item p.item_vote {
   padding: 5px 0px 10px 0px;
   font-size: 0.85em;
   color: $fontMuted;
@@ -145,7 +150,7 @@ p.item_vote {
   }
 }
 
-p.item_overview {
+.now_playing_item p.item_overview {
   font-size: 0.85em;
   line-height: 150%;
   padding-right: 20px;
@@ -160,7 +165,7 @@ p.item_overview {
 
 .now_playing_item_list {
   width: 230px;
-  height: 100vh;
+  height: auto;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -169,9 +174,10 @@ p.item_overview {
   color: $fontColor;
   box-shadow: -1px 0px 15px -3px rgba(0,0,0,0.5);
 
-  overflow-y: hidden;
+  overflow: hidden;
   padding-top: 55px;
 
+  
   @media #{$md}{
     transition: all 0.2s;
     transform: translateX(215px);

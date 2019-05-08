@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchMenu from './SearchMenu';
-import ResultItem from './ResultItem';
+import Item from '../Item';
 
 import Context from '../../context';
 import classNames from 'classnames';
@@ -82,7 +82,7 @@ function Search(props){
       <article className="search_wrapper">
         <p className="info alert"></p>
         <form className="search_form" onSubmit={e => handleSubmit(e, searchElements)}>
-          <input type="text" autoFocus={true} value={searchValue} onChange={e => setSearchValue(e.target.value)} placeholder={`${placeholder}`} />
+          <input type="text" value={searchValue} onChange={e => setSearchValue(e.target.value)} placeholder={`${placeholder}`} />
           <button onClick={e => changeType(e, 'multi', searchElements)} className={classNames({
             'search_type': true,
             'search_type_active': searchType === 'multi'
@@ -108,9 +108,10 @@ function Search(props){
           <p>Brak wyników wyszukiwania...</p>
         ) : (
           <React.Fragment>
-            {searchResults.map(item => (
-              <ResultItem item={item} key={item.id} />
-            ))}
+            {searchResults.map((item, index) => {
+              const type = item.title ? 'movie' : (item.first_air_date ? 'tv' : 'person');
+              return <Item key={item.id} item={item} type={type} typeDate="result" index={index} />
+            })}
           </React.Fragment>
         )))}
         {totalPages > 1 ? (

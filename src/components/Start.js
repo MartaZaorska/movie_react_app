@@ -24,7 +24,7 @@ function Start(props){
     <article className="start_container" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backdrop_path})`}}>
       <div className="start_cover">
         <header>
-          <h3 className="start_container_title">Najmocniej oczekiwana premiera</h3>
+          <h3 className="start_container_title">Najbardziej oczekiwana premiera</h3>
         </header>
         <section className="start_content">
           <p className="start_date">{release_date}</p>

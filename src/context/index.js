@@ -1,6 +1,6 @@
 import React from 'react';
 import { API_KEY } from '../keys';
-import { movieReducer, START_ELEMENTS, CLEAR_RESULTS, LOADING_ELEMENTS, SEARCH_ELEMENTS, NOW_PLAYING_MOVIE, ON_AIR_TV } from './reducers';
+import { movieReducer, START_ELEMENTS, CLEAR_RESULTS, LOADING_ELEMENTS, SEARCH_ELEMENTS, NOW_PLAYING_MOVIE, ON_AIR_TV, RANKING_MOVIE, RANKING_TV, RANKING_PERSON, SINGLE_ELEMENT, CLEAR_SINGLE_ELEMENT } from './reducers';
 
 const Context = React.createContext();
 
@@ -18,7 +18,13 @@ export function Provider(props){
     startMovie: undefined,
     genresMovie: undefined,
     nowPlayingMovie: undefined,
-    onAirTv: undefined
+    onAirTv: undefined,
+    popularTv: undefined,
+    popularMovie: undefined,
+    popularPerson: undefined,
+    topRatedTv: undefined,
+    topRatedMovie: undefined,
+    singleElement: undefined
   }
 
   const [ state, dispatch ] = React.useReducer(movieReducer, initialState); 
@@ -86,6 +92,104 @@ export function Provider(props){
     }
   }
 
+  const getRankingElements = (mediaType, type, page) => {
+    return new Promise((resolve, reject) => {
+      fetch(`https://api.themoviedb.org/3/${mediaType}/${type}?api_key=${API_KEY}&language=pl-PL&page=${page}`)
+        .then(res => res.json())
+        .then(data => resolve(data))
+        .catch(err => reject(err));
+    });
+  }
+
+  const getRankingMovie = () => {
+    if(!state.topRatedMovie || !state.popularMovie){
+      dispatch({ type: LOADING_ELEMENTS });
+      Promise.all([getRankingElements('movie', 'top_rated', 1), getRankingElements('movie', 'top_rated', 2), getRankingElements('movie', 'popular', 1), getRankingElements('movie', 'popular', 2)])
+        .then(data => {
+          const topRated = [...data[0].results, ...data[1].results];
+          const popular = [...data[2].results, ...data[3].results];
+          dispatch({ type: RANKING_MOVIE, popular, topRated });
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
+
+  const getRankingTv = () => {
+    if(!state.topRatedTv || !state.popularTv){
+      dispatch({ type: LOADING_ELEMENTS });
+      Promise.all([getRankingElements('tv', 'top_rated', 1), getRankingElements('tv', 'top_rated', 2), getRankingElements('tv', 'popular', 1), getRankingElements('tv', 'popular', 2)])
+        .then(data => {
+          const topRated = [...data[0].results, ...data[1].results];
+          const popular = [...data[2].results, ...data[3].results];
+          dispatch({ type: RANKING_TV, popular, topRated });
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
+
+  const getRankingPerson = () => {
+    if(!state.popularPerson){
+      dispatch({ type: LOADING_ELEMENTS });
+      Promise.all([getRankingElements('person', 'popular', 1), getRankingElements('person', 'popular', 2)])
+        .then(data => {
+          const popular = [...data[0].results, ...data[1].results];
+          dispatch({ type: RANKING_PERSON, popular });
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
+
+  const getPartElement = (type, media_id, part = false) => {
+
+    let url = `https://api.themoviedb.org/3/${type}`;
+    if(!part) url += `/${media_id}?api_key=${API_KEY}&language=pl-PL`;
+    if(part && part !== 'videos') url += `/${media_id}/${part}?api_key=${API_KEY}&language=pl-PL&include_image_language=en,null`;
+    if(part && part === 'videos') url += `/${media_id}/${part}?api_key=${API_KEY}`;
+
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then(res => res.json())
+        .then(data => resolve(data))
+        .catch(err => console.log(err));
+    });
+
+  }
+
+
+  const getSingleElement = (type, media_id) => {
+
+    dispatch({ type: LOADING_ELEMENTS });
+
+    const promises = [getPartElement(type, media_id), getPartElement(type, media_id, 'external_ids'), getPartElement(type, media_id, 'images')];
+
+    if(type === 'movie' || type === 'tv') promises.push(getPartElement(type, media_id, 'credits'), getPartElement(type, media_id, 'recommendations'));
+
+    if(type === 'movie') promises.push(getPartElement(type, media_id, 'videos'));
+
+    if(type === 'person') promises.push(getPartElement(type, media_id, 'tagged_images'), getPartElement(type, media_id, 'movie_credits'), getPartElement(type, media_id, 'tv_credits'));
+    
+    Promise.all(promises)
+      .then(data => {
+        let element;
+        if(type === 'movie') element = { base: data[0], external_ids: data[1], images: data[2], credits: data[3], recommendations: data[4], videos: data[5] };
+
+        if(type === 'tv') element = { base: data[0], external_ids: data[1], images: data[2], credits: data[3], recommendations: data[4] };
+
+        if(type === 'person') element = { base: data[0], external_ids: data[1], images: data[2], tagged_images: data[3], movie_credits: data[4], tv_credits: data[5] };
+        
+        dispatch({ type: SINGLE_ELEMENT, element });
+      })
+      .catch(err => console.log(err));
+  }
+
+  const clearSingleElement = () => {
+    dispatch({ type: CLEAR_SINGLE_ELEMENT });
+  }
+
+
   React.useEffect(() => {
     if(!state.genresMovie || !state.startMovie){
       dispatch({ type: LOADING_ELEMENTS });
@@ -104,7 +208,12 @@ export function Provider(props){
       searchElements,
       clearResultsSearch,
       getNowPlayingMovie,
-      getOnAirTv
+      getOnAirTv,
+      getRankingMovie,
+      getRankingTv,
+      getRankingPerson,
+      getSingleElement,
+      clearSingleElement
     }}>
       {props.children}
     </Context.Provider>

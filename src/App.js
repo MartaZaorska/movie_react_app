@@ -5,6 +5,8 @@ import Welcome from './components/Welcome';
 import Start from './components/Start';
 import Search from './components/Search';
 import NowPlaying from './components/NowPlaying';
+import Ranking from './components/Ranking';
+import Realization from './components/Realization';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -38,6 +40,8 @@ function App() {
           <Route exact path="/start" component={Start} />
           <Route exact path="/search/:type_search" component={Search} />
           <Route exact path="/now_playing/:type_media" component={NowPlaying} />
+          <Route exact path="/ranking/:type_media" component={Ranking} />
+          <Route exact path="/realization/:type_media/:id" component={Realization} />
         </Switch>
       </main>
     </div>

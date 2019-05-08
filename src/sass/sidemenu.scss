@@ -48,9 +48,18 @@ ul.side_navbar_list li {
   padding: 5px 0px;
 
   &.list_item.muted { font-size: 0.7em; color: $fontMuted; padding: 1px 0px; text-transform: uppercase;}
-  &.list_item.title { font-size: 1.3em; color: $colorSpecial; font-weight: 800; padding-top: 1px; text-transform: uppercase; }
 
-  &.list_item_link a {
+  &.list_item.title, &.list_item_link.title { font-size: 1.3em; color: $colorSpecial; font-weight: 800; padding-top: 1px; text-transform: uppercase; }
+
+  &.list_item_link.title { font-size: 0.85em; }
+
+  &.list_item_link.title:hover { color: lighten($colorSpecial, 15); cursor: pointer; }
+
+  &.vote_average { font-size: 0.8em; span.average { font-size: 1.2em; color: $colorSpecial; font-weight: 800; } }
+
+  &.vote_count { padding-bottom: 15px; font-size: 0.8em; span.count { font-size: 1.2em; color: $colorSpecial; font-weight: 800; } }
+
+  &.list_item_link a, &.list_item_link {
     cursor: pointer;
     text-decoration: none;
     color: inherit;
@@ -94,4 +103,8 @@ ul.side_navbar_list span.line {
   @media #{$md}{
     display: block;
   }
+}
+
+.link_desktop {
+  @media #{$sm}{ display: none; }
 }

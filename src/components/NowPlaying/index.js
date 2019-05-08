@@ -36,6 +36,7 @@ function NowPlaying(props){
 
 
   if(context.isLoading) return <div>Loading...</div>
+  
   const type = props.match.params.type_media;
   const items = type === 'movie' ? context.nowPlayingMovie : context.onAirTv;
 
