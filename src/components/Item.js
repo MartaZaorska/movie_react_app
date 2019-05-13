@@ -1,17 +1,18 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import '../sass/item.scss';
 
-function Item(props){
+function Item({type, typeData, item, index}){
 
-  const { type, typeData, item, index } = props; 
-  const { poster_path, id, name, vote_average, first_air_date, release_date, title, profile_path, known_for } = item;
+  if(!item) return null;
+
+  const { poster_path = "", id = "", name = "", vote_average = 0, first_air_date = "", release_date = "", title = "", profile_path = "", known_for = [] } = item;
 
   return (
-    <section className={classNames({'item': true, 'item_ranking': typeData === 'ranking', 'item_result': typeData === 'result'})}>
+    <section className={classNames({'item': true, 'item_ranking': typeData === 'ranking', 'item_result': typeData === 'result', 'item_extra': typeData === 'extra' })}>
 
       {typeData === 'ranking' ? (
         <section className="item_number">{index + 1}</section>
@@ -25,9 +26,17 @@ function Item(props){
 
       <section className="item_content">
 
-        {type !== 'person' ? (<p className="item_date">{type === 'movie' ? `${release_date.substring(0,4)}` : `${first_air_date.substring(0,4)}`}</p>) : (<p className="people_empty"></p>)}
+        {type !== 'person' ? (
+          <p className="item_date">
+            {type === 'movie' ? `${release_date.substring(0,4)}` : `${first_air_date.substring(0,4)}`}
+          </p>
+        ) : (
+          <p className="people_empty"></p>
+        )}
 
-        <p className="item_title">{type === 'movie' ? (title.length <= 23 ? `${title}` : `${title.substring(0,20)}...`) : (name.length <= 23 ? `${name}` : `${name.substring(0,20)}...`) }</p>
+        <p className="item_title">
+          {type === 'movie' ? (title.length <= 23 ? `${title}` : `${title.substring(0,20)}...`) : (name.length <= 23 ? `${name}` : `${name.substring(0,20)}...`) }
+        </p>
 
         {type === 'person' ? (known_for && known_for.length > 0 ? (
           <p className="item_known">Znany/a z: {known_for[0].title ? (
@@ -52,5 +61,12 @@ function Item(props){
     </section>
   );
 }
+
+Item.propTypes = {
+  type: PropTypes.string.isRequired,
+  typeData: PropTypes.string,
+  item: PropTypes.object.isRequired,
+  index: PropTypes.number
+};
 
 export default Item;

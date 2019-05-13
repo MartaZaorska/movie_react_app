@@ -1,6 +1,7 @@
 import React from 'react';
 import { API_KEY } from '../keys';
-import { movieReducer, START_ELEMENTS, CLEAR_RESULTS, LOADING_ELEMENTS, SEARCH_ELEMENTS, NOW_PLAYING_MOVIE, ON_AIR_TV, RANKING_MOVIE, RANKING_TV, RANKING_PERSON, SINGLE_ELEMENT, CLEAR_SINGLE_ELEMENT } from './reducers';
+import Store from '../store';
+import { movieReducer, START_ELEMENTS, CLEAR_RESULTS, LOADING_ELEMENTS, SEARCH_ELEMENTS, NOW_PLAYING_MOVIE, ON_AIR_TV, RANKING_MOVIE, RANKING_TV, RANKING_PERSON, SINGLE_ELEMENT, CLEAR_SINGLE_ELEMENT, NOT_FOUND_ERROR, SET_STORE_ELEMENTS } from './reducers';
 
 const Context = React.createContext();
 
@@ -12,6 +13,7 @@ export function Provider(props){
   
   const initialState = {
     isLoading: false, 
+    notFoundError: false,
     searchResults: undefined, 
     page: undefined, 
     totalPages: undefined,
@@ -24,7 +26,9 @@ export function Provider(props){
     popularPerson: undefined,
     topRatedTv: undefined,
     topRatedMovie: undefined,
-    singleElement: undefined
+    singleElement: undefined,
+    favourite: undefined,
+    wantSee: undefined
   }
 
   const [ state, dispatch ] = React.useReducer(movieReducer, initialState); 
@@ -180,13 +184,24 @@ export function Provider(props){
 
         if(type === 'person') element = { base: data[0], external_ids: data[1], images: data[2], tagged_images: data[3], movie_credits: data[4], tv_credits: data[5] };
         
-        dispatch({ type: SINGLE_ELEMENT, element });
+        if(data.some(item => item.status_code && item.status_code === 34)){
+          dispatch({ type: NOT_FOUND_ERROR });
+        }else{
+          dispatch({ type: SINGLE_ELEMENT, element });
+        }
       })
       .catch(err => console.log(err));
   }
 
   const clearSingleElement = () => {
     dispatch({ type: CLEAR_SINGLE_ELEMENT });
+  }
+
+
+  const getElementsFromStore = () => {
+    const favourite = Store.getElements('favourite');
+    const wantSee = Store.getElements('wantsee');
+    dispatch({ type: SET_STORE_ELEMENTS, favourite, wantSee });
   }
 
 
@@ -201,7 +216,6 @@ export function Provider(props){
     }
   }, []);
 
-
   return (
     <Context.Provider value={{
       ...state,
@@ -213,7 +227,8 @@ export function Provider(props){
       getRankingTv,
       getRankingPerson,
       getSingleElement,
-      clearSingleElement
+      clearSingleElement,
+      getElementsFromStore
     }}>
       {props.children}
     </Context.Provider>

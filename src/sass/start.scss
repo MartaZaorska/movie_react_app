@@ -23,11 +23,9 @@
   padding: 10px;
 
   border-left: 1px solid rgba(197, 187, 187, 0.712);
-  overflow: hidden;
 
   color: rgba(197, 187, 187, 0.712);
   mix-blend-mode: hard-light;
-  //mix-blend-mode: color-dodge;
 
   @media #{$md}{
     left: 10px;
@@ -76,7 +74,7 @@ h1.start_title {
   }
 }
 
-p.start_date, section.start_genres {
+.start_date, section.start_genres {
   font-size: 0.9em;
   font-weight: 800;
   text-transform: uppercase;
@@ -102,8 +100,8 @@ p.start_date, section.start_genres {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  border: 1px solid #eee;
-  color: #eee;
+  border: 1px solid #ccc;
+  color: #ccc;
   text-align: center;
   line-height: 35px;
   position: absolute;
@@ -117,6 +115,7 @@ p.start_date, section.start_genres {
   &:hover {
     background: rgba(255, 255, 255, 0.377);
     background-blend-mode: overlay;
+    color: #eee;
   }
 
   @media #{$md}{

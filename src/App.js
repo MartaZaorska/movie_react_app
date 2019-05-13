@@ -7,6 +7,9 @@ import Search from './components/Search';
 import NowPlaying from './components/NowPlaying';
 import Ranking from './components/Ranking';
 import Realization from './components/Realization';
+import Person from './components/Person';
+import Extra from './components/Extra';
+import Contact from './components/Contact';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -42,6 +45,9 @@ function App() {
           <Route exact path="/now_playing/:type_media" component={NowPlaying} />
           <Route exact path="/ranking/:type_media" component={Ranking} />
           <Route exact path="/realization/:type_media/:id" component={Realization} />
+          <Route exact path="/person/:id" component={Person} />
+          <Route exact path="/extra" component={Extra} />
+          <Route exact path="/contact" component={Contact} />
         </Switch>
       </main>
     </div>

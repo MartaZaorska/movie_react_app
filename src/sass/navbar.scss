@@ -5,6 +5,7 @@
   top: 0px; left: 0px;
   width: 100vw;
   height: 100vh;
+  background: #222;
   
   overflow: hidden;
   display: flex;
@@ -13,8 +14,6 @@
   transform: translateX(-100%);
   opacity: 0;
   transition: all 0.3s;
-
-  background: #222;
 
   &.navbar_open {
     transform: translateX(0%);
@@ -102,7 +101,7 @@ h1.navbar_item_title {
   }
 }
 
-.extra h1.navbar_item_title {
+.navbar_item_extra h1.navbar_item_title {
   @media screen and (max-height: 530px) and (max-width: 467px){
     top: 40%;
   }
@@ -162,10 +161,6 @@ li.navbar_list_item a {
   font-weight: 800;
 
   @media #{$md}{
-    font-size: 1.4em;
-  }
-
-  @media #{$md}{
     font-size: 0.9em;
     -webkit-text-stroke: 0px;
     text-stroke: 0px;
@@ -180,7 +175,7 @@ li.navbar_list_item a {
 }
 
 
-.movies {
+.navbar_item_movies {
   background-image: url('img/movies.jpg');
 
   ul.navbar_list {
@@ -195,7 +190,7 @@ li.navbar_list_item a {
   }
 }
 
-.serials {
+.navbar_item_serials {
   background-image: url('img/serials.jpg');
 
   ul.navbar_list {
@@ -213,7 +208,7 @@ li.navbar_list_item a {
   }
 }
 
-.people {
+.navbar_item_people {
   background-image: url('img/people.jpg');
 
   ul.navbar_list {
@@ -233,7 +228,7 @@ li.navbar_list_item a {
 }
 
 
-.people li.navbar_list_item a {
+.navbar_item_people li.navbar_list_item a {
   text-decoration: none;
   mix-blend-mode: difference;
   color: rgb(10, 10, 10);
@@ -271,7 +266,7 @@ li.navbar_list_item a {
 }
 
 
-.extra {
+.navbar_item_extra {
   border-right: none;
   background-image: url('img/user.jpg');
 
@@ -295,7 +290,7 @@ li.navbar_list_item a {
 }
 
 .navbar:hover {
-  .serials:hover, .movies:hover, .people:hover, .extra:hover {
+  .navbar_item_serials:hover, .navbar_item_movies:hover, .navbar_item_people:hover, .navbar_item_extra:hover {
     h1.navbar_item_title {
       transform: rotate(-90deg) translate(-155px, 1vw);
       @media #{$md}{ transform: none; }

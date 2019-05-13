@@ -141,6 +141,7 @@ span.main_genre {
   text-transform: uppercase;
   font-size: 0.9em;
   transition: all 0.1s;
+  cursor: pointer;
 
   @media #{$sm}{
     margin-bottom: 10px;

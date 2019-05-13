@@ -9,6 +9,8 @@ export const RANKING_MOVIE = 'RANKING_MOVIE';
 export const RANKING_PERSON = 'RANKING_PERSON';
 export const SINGLE_ELEMENT = 'SINGLE_ELEMENT';
 export const CLEAR_SINGLE_ELEMENT = 'CLEAR_SINGLE_ELEMENT';
+export const NOT_FOUND_ERROR = 'NOT_FOUND_ERROR';
+export const SET_STORE_ELEMENTS = 'SET_STORE_ELEMENTS'; 
 
 const clearResultsSearch = state => {
   return { ...state, isLoading: false, searchResults: undefined, page: undefined, totalPages: undefined }
@@ -19,7 +21,7 @@ const loadingElements = state => {
 }
 
 const searchElements = (results, page, totalPages, state) => {
-  return { ...state, isLoading: false, searchResults: results, page, totalPages }
+  return { ...state, isLoading: false, searchResults: results, page, totalPages, notFoundError: false }
 }
 
 const getStartElements = (movie, genres, state) => {
@@ -47,12 +49,21 @@ const getSingleElement = (element, state) => {
 }
 
 const clearSingleElement = state => {
-  return { ...state, isLoading: false, singleElement: undefined }
+  return { ...state, isLoading: false, singleElement: undefined, notFoundError: false }
 }
 
 const getRankingPerson = (popular, state) => {
   return { ...state, isLoading: false, popularPerson: popular }
 }
+
+const notFoundError = (state) => {
+  return { ...state, isLoading: false, notFoundError: true }
+}
+
+const setStoreElements = (favourite, wantSee, state) => {
+  return { ...state, favourite, wantSee }
+}
+
 
 export const movieReducer = (state, action) => {
   switch(action.type){
@@ -78,6 +89,10 @@ export const movieReducer = (state, action) => {
       return getSingleElement(action.element, state);
     case CLEAR_SINGLE_ELEMENT:
       return clearSingleElement(state);
+    case NOT_FOUND_ERROR:
+      return notFoundError(state);
+    case SET_STORE_ELEMENTS: 
+      return setStoreElements(action.favourite, action.wantSee, state);
     default:
       return state;
   }

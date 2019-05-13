@@ -1,0 +1,20 @@
+@import 'variables.scss';
+
+.extra_container {
+  @include sectionContainer;
+}
+
+.extra_wrapper {
+  @include sectionWrapper;
+}
+
+.extra_title {
+  @include sectionTitle;
+}
+
+.extra_favourite, .extra_wantsee {
+  padding: 60px 40px 20px 40px;
+  @media #{$sm} {
+    padding: 60px 20px 10px 20px;
+  }
+}

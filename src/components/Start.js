@@ -2,6 +2,7 @@ import React from 'react';
 import Context from '../context';
 import { Link } from 'react-router-dom';
 
+import Spinner from './Spinner';
 import '../sass/start.scss';
 
 function Start(props){
@@ -14,15 +15,15 @@ function Start(props){
   }
 
   if(!context.startMovie){
-    return <div>Loading...</div>
+    return <Spinner />
   }
 
-  const { startMovie, genresMovie } = context;
-  const { backdrop_path, title, genre_ids, release_date, id } = startMovie;
+  const { startMovie, genresMovie = [] } = context;
+  const { backdrop_path = "", title = "", genre_ids = [], release_date = "", id = "" } = startMovie;
 
   return (
     <article className="start_container" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backdrop_path})`}}>
-      <div className="start_cover">
+      <section className="start_cover">
         <header>
           <h3 className="start_container_title">Najbardziej oczekiwana premiera</h3>
         </header>
@@ -34,12 +35,12 @@ function Start(props){
           <section className="start_genres">
             {genre_ids.map(genre_id => {
               const genre = genresMovie.find(genre_item => genre_item.id === genre_id);
-              return <span key={`${genre_id}${genre.name}`} className="genre_item">{genre.name}</span>
+              return <span key={`${genre_id}-${id}`} className="genre_item">{genre.name}</span>
             })}
           </section>
         </section>
         <button className="start_button" onClick={() => handleClick()}><i className="fas fa-angle-down"></i></button>
-      </div>
+      </section>
     </article>
   )
 }

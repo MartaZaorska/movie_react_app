@@ -108,3 +108,52 @@ ul.side_navbar_list span.line {
 .link_desktop {
   @media #{$sm}{ display: none; }
 }
+
+
+.side_navbar.person_side_navbar {
+  li.picture, li.picture_icon {
+    width: 120px;
+    text-align: center;
+    height: 120px;
+    border-radius: 50%;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 60%;
+    box-shadow: 0px 2px 20px rgba(0,0,0,0.2);
+    @media #{$xs}{
+      margin-left: calc((100% - 120px) / 2);
+    }
+
+    i {
+      font-size: 4em;
+      line-height: 110px;
+    }
+  }
+
+  li.title {
+    color: $lightMenu;
+    background: $colorSpecial;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 12px;
+    margin-top: 10px;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+  }
+
+  li.muted { text-align: center; font-size: 0.75; font-weight: 400; color: $fontMuted; padding-bottom: 5px; }
+  li.list_item { font-size: 0.85em; padding-left: 15px; font-weight: 400; color: $fontMuted; }
+  li.list_item span { color: $fontColor; }
+
+  li.person_socials {
+    text-align: center;
+     a {
+      color: $fontMuted;
+      padding: 0px 5px;
+      transition: all 0.1s;
+      font-size: 2em;
+      &:hover { color: $colorSpecial; }
+    }
+  }
+}

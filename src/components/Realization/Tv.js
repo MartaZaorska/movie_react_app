@@ -1,24 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import MainTv from './MainTv';
 import Credits from './Credits';
 import Photos from './Photos';
 import Recommendations from './Recommendations';
 
-function Tv(props){
+function Tv({ element }){
 
-  const { base, credits, external_ids, images, recommendations } = props.element;
-  const { crew, cast } = credits;
-  const { backdrop_path, created_by, poster_path } = base;
-
-  const imageURL = window.innerWidth >= 576 ? backdrop_path : poster_path;
+  const { base = {}, credits = {}, external_ids = {}, images = {}, recommendations = {} } = element;
+  const { crew = [], cast = [] } = credits;
+  const { backdrop_path = "", created_by = [] } = base;
 
   const totalCrew = crew && created_by ? [...created_by, ...crew] : [];
 
   return (
-    <section className="realization_wrapper" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${imageURL})`}}>
+    <section className="realization_wrapper" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${backdrop_path})`}}>
       <section className="realization_cover">
-        <MainTv base={base} external_ids={external_ids} videoURL={false}/>
+        <MainTv base={base} external_ids={external_ids} />
         <Credits crew={totalCrew} cast={cast} />
         <Photos images={images} />
         <Recommendations recommendations={recommendations} />
@@ -26,5 +25,9 @@ function Tv(props){
     </section>
   );
 }
+
+Tv.propTypes = {
+  element: PropTypes.object
+};
 
 export default Tv;

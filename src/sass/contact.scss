@@ -1,0 +1,76 @@
+@import 'variables.scss';
+
+.contact_container {
+  background: rgba(15,40,71,1);
+  width: 100%;
+  height: auto;
+  position: relative;
+  min-height: 100vh;
+  padding: 30px;
+
+  @media #{$sm}{ padding: 10px; }
+}
+
+.contact_title {
+  font-weight: 800;
+  font-size: 4em;
+  line-height: 1.2;
+  padding: 10px 0px;
+  margin-top: 20px;
+  @include strokeText($lightMenu);
+  @media #{$lg}{ font-size: 3.3em; }
+  @media #{$md}{ font-size: 2.8em; }
+  @media #{$sm}{ font-size: 2em; }
+}
+
+.contact_content {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100%;
+  color: $fontMuted;
+  font-size: 0.85em;
+  line-height: 1.55;
+  margin: 20px 0px;
+
+  @media #{$md}{
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, auto);
+  }
+
+  @media #{$sm}{ margin: 0px; }
+}
+
+.application_sources {
+  text-align: left;
+  padding-right: 50px;
+  @media #{$md}{ padding: 20px 0px; }
+}
+
+.application_creator {
+  text-align: right;
+  padding-left: 50px;
+  @media #{$md}{ padding: 20px 0px; }
+  @media #{$sm}{ text-align: left; }
+}
+
+.contact_text a {
+  font-size: 1.1em;
+  color: $lightMenu;
+  transition: all 0.1s;
+  text-decoration: none;
+  &:hover { color: $colorSpecial; }
+}
+
+.contact_text.socials a {
+  padding: 10px;
+  font-size: 1.3em;
+  display: inline-block;
+}
+
+.contact_subtitle {
+  color: $lightMenu;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  padding: 10px 0px;
+}

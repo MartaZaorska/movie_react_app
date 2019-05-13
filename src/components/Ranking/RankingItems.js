@@ -1,21 +1,19 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import Item from '../Item';
 
-function RankingItems(props){
+function RankingItems({ type, typeData, value }){
   
   let [visibleItems, setVisibleItems] = React.useState(8);
 
   const count = 8;
-  const totalItems = props.value.length;
+  const totalItems = value.length;
  
   const showMore = nameClass => {
     let visible = Math.min(visibleItems + count, totalItems);
     if(visible >= totalItems) document.querySelector(`.${nameClass}`).style.display = 'none';
     setVisibleItems(visible);
   }
-
-  const { type, typeData, value } = props;
 
   return (
     <React.Fragment>
@@ -32,5 +30,11 @@ function RankingItems(props){
     </React.Fragment>
   )
 }
+
+RankingItems.propTypes = {
+  type: PropTypes.string.isRequired,
+  typeData: PropTypes.string.isRequired,
+  value: PropTypes.array.isRequired
+};
 
 export default RankingItems;

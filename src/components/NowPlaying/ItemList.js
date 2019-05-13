@@ -1,16 +1,14 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-function ItemList(props){
+function ItemList({ items, itemIndex, changeIndex, type }){
 
-  if(!props.items || props.items.length === 0) return <div>Loading...</div>
-
-  const { items, itemIndex, changeIndex, type } = props;
+  if(!items || items.length === 0) return null;
 
   return (
     <article className="now_playing_item_list">
-      <section className="item_list_content">
+      <section className="now_playing_item_list_content">
         {items.map((item, index) => (
           <section key={item.id} onClick={() => changeIndex(index)} className={classNames({
             'item_list': true,
@@ -26,5 +24,12 @@ function ItemList(props){
     </article>
   )
 }
+
+ItemList.propTypes = {
+  items: PropTypes.array,
+  itemIndex: PropTypes.number.isRequired,
+  changeIndex: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired
+};
 
 export default ItemList;

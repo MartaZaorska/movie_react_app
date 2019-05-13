@@ -1,8 +1,9 @@
 import React from 'react';
 import Context from '../../context';
 
-import Item from './Item';
+import ActiveItem from './ActiveItem';
 import ItemList from './ItemList';
+import Spinner from '../Spinner';
 
 import '../../sass/nowplaying.scss';
 
@@ -35,7 +36,7 @@ function NowPlaying(props){
   }, [props.match.params.type_media]);
 
 
-  if(context.isLoading) return <div>Loading...</div>
+  if(context.isLoading) return <Spinner />
   
   const type = props.match.params.type_media;
   const items = type === 'movie' ? context.nowPlayingMovie : context.onAirTv;
@@ -43,7 +44,7 @@ function NowPlaying(props){
   return (
     <article className="now_playing_container">
       <i onClick={toggleMenu} className="now_playing_button fas fa-angle-left"></i>
-      <Item type={type} items={items} itemIndex={itemIndex} />
+      <ActiveItem type={type} items={items} itemIndex={itemIndex} />
       <ItemList type={type} items={items} changeIndex={changeIndex} itemIndex={itemIndex} />
     </article>
   );

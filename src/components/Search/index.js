@@ -1,9 +1,11 @@
 import React from 'react';
-import SearchMenu from './SearchMenu';
-import Item from '../Item';
+import classNames from 'classnames';
 
 import Context from '../../context';
-import classNames from 'classnames';
+
+import SearchMenu from './SearchMenu';
+import Item from '../Item';
+import Spinner from '../Spinner';
 
 import '../../sass/search.scss';
 
@@ -54,7 +56,6 @@ function Search(props){
     }
   }
 
-  
   React.useEffect(() => {
     if(context.clearResultsSearch) context.clearResultsSearch();
     setSearchType(props.match.params.type_search);
@@ -70,17 +71,18 @@ function Search(props){
     setPlaceholder(label);
   }, [searchType]);
 
-  if(!context.searchElements){
-    return <div>Loading...</div>
-  }
 
   const { searchElements, isLoading, searchResults, totalPages, page } = context;
+
+  if(!context.searchElements) return null;
 
   return (
     <article className="search_container">
       <SearchMenu />
       <article className="search_wrapper">
+
         <p className="info alert"></p>
+
         <form className="search_form" onSubmit={e => handleSubmit(e, searchElements)}>
           <input type="text" value={searchValue} onChange={e => setSearchValue(e.target.value)} placeholder={`${placeholder}`} />
           <button onClick={e => changeType(e, 'multi', searchElements)} className={classNames({
@@ -102,10 +104,11 @@ function Search(props){
           <br />
           <button type="submit" className="search_button">Szukaj <i className="fas fa-search"></i></button>
         </form>
+
         {isLoading === false && !searchResults ? null : (isLoading === true ? (
-          <p>Loading...</p>
+          <Spinner />
         ) : (searchResults.length === 0 ? (
-          <p>Brak wyników wyszukiwania...</p>
+          <p className="not_results_text">Nie odszukaliśmy pasujących wyników</p>
         ) : (
           <React.Fragment>
             {searchResults.map((item, index) => {
@@ -114,13 +117,19 @@ function Search(props){
             })}
           </React.Fragment>
         )))}
+
         {totalPages > 1 ? (
           <section className="pages_results">
+
             {page > 1 ? (<i className="prev fas fa-angle-left" onClick={() => prevPage(page, searchElements)}></i>) : (<i className="prev disabled fas fa-angle-left"></i>)}
+
             <span className="current_page">{page}</span>
+
             {page < totalPages ? (<i className="next fas fa-angle-right" onClick={() => nextPage(page, totalPages, searchElements)}></i>) : (<i className="next disabled fas fa-angle-right"></i>)}
+
           </section>
         ) : null }
+
       </article>
     </article>
   );

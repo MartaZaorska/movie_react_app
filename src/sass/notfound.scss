@@ -1,0 +1,62 @@
+@import 'variables.scss';
+
+.not_found_container {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.not_found_content {
+  width: 350px;
+  height: auto;
+
+  @media #{$sm}{
+    width: 100%;
+    padding: 0px 10px;
+  }
+}
+
+.not_found_title {
+  font-size: 4em;
+  display: inline-block;
+  min-height: 80px;
+  padding: 0px 10px;
+  color: $lightSection;
+  z-index: 1;
+  text-shadow: $smallTextShadow;
+}
+
+.not_found_text {
+  font-size: 0.8em;
+  display: inline-block;
+  color: $colorSpecialAlpha;
+  padding: 20px 10px 0px 10px;
+  z-index: 1;
+}
+
+
+.not_found_link {
+  margin-top: 20px;
+  z-index: 2;
+  display: block;
+  box-shadow: 0px 14px 30px -14px rgba(0, 0, 0, 0.95);
+  cursor: pointer;
+  letter-spacing: 1px;
+  background-color: $colorSpecialAlpha;
+  text-align: center;
+  padding: 5px 0px;
+  width: 100%;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: 700;
+  text-decoration: none;
+  color: $lightMenu;
+  transition: all 0.2s;
+  &:hover {
+    background-color: $colorSpecial;
+  }
+}

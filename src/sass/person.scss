@@ -1,0 +1,302 @@
+@import 'variables.scss';
+
+.person_container {
+  @include sectionContainer;
+}
+
+.person_wrapper {
+  @include sectionWrapper;
+}
+
+.person_title {
+  font-size: 1.1em;
+  text-transform: uppercase;
+  color: $colorSpecial;
+  letter-spacing: 1px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.person_button {
+  @include showMoreButton;
+}
+
+/*---------IMAGES------*/
+
+.person_images {
+  padding: 50px 10px 20px 40px;
+  @media #{$sm}{
+    padding: 50px 20px 10px 20px;
+  }
+}
+
+.person_images_item {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: calc((100% - 150px) / 5);
+  height: 165px;
+  border-radius: 10px;
+  margin-right: 30px;
+  margin-bottom: 25px;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0px 3px 15px -5px rgba(0,0,0,0.8);
+  filter: grayscale(70%);
+  transition: all 0.2s;
+  &:hover { filter: grayscale(0%); }
+
+  @media #{$xl}{
+    width: calc((100% - 120px) / 4);
+  }
+
+  @media #{$lg}{
+    width: calc((100% - 90px) / 3);
+  }
+
+  @media #{$md}{
+    width: calc((100% - 60px) / 2);
+  }
+
+  @media #{$sm}{
+    width: 100%;
+    margin-right: 0px;
+  }
+}
+
+/*----------- CREDITS  ------------*/
+
+.person_movie, .person_tv {
+  padding: 50px 40px 10px 40px;
+  overflow-x: hidden;
+  @media #{$xl}{
+    padding: 50px 20px 10px 20px;
+  }
+}
+
+.credits_item {
+  width: 100%;
+  background-color: $lightSection;
+  box-shadow: 0px 3px 15px -5px rgba(0,0,0,0.4);
+  padding: 5px;
+  height: 60px;
+  color: $fontColor;
+  margin-bottom: 20px;
+  border-radius: 8px;
+
+  @media #{$sm}{ height: auto; padding: 10px; }
+  @media #{$xs}{ padding: 5px; }
+}
+
+.credits_item_image {
+  height: 50px;
+  width: auto;
+  float: left;
+  
+  i {
+    width: 90px;
+    text-align: center;
+    font-size: 3em;
+  }
+
+  img {
+    height: 50px; width: auto;
+  }
+
+  @media #{$sm}{ 
+    height: auto; width: 100%;
+    img {
+      height: auto; width: 100%;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+    i {
+      width: 100%;
+      padding: 20px 0px;
+    }
+  }
+}
+
+.credits_item_content {
+  height: 50px;
+  font-size: 0.85em;
+  margin-left: 25px;
+  float: left;
+  line-height: 48px;
+  width: 85%;
+
+  display: flex;
+  justify-content: space-between;
+
+  @media #{$xl}{
+    margin-left: 10px;
+    width: 78%;
+    line-height: 150%;
+  }
+
+  @media #{$sm}{ 
+    height: auto;
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 160%;
+    margin: 0px;
+  }
+}
+
+.credits_item_content p.credits_item_info {
+
+  span.credits_item_title {
+    font-weight: 800;
+    padding-right: 10px;
+    
+    a {
+      color: $colorSpecial;
+      text-decoration: none;
+    }
+
+    @media #{$xl}{
+      display: block;
+      margin-top: 5px;
+    }
+
+    @media #{$sm}{
+      padding-right: 0px;
+    }
+  }
+
+  span.credits_item_job {
+    color: $fontMuted;
+    .character, .job {
+      color: $colorSpecial;
+    }
+    .job { text-transform: uppercase; }
+    
+    @media #{$xl}{
+      display: block;
+    }
+    
+    @media #{$sm}{
+      padding-bottom: 10px;
+    }
+  }
+}
+
+.credits_item_link {
+  text-decoration: none;
+  color: $fontMuted;
+  font-weight: 800;
+  transition: all 0.1s;
+  line-height: 48px;
+  &:hover { color: $colorSpecial; }
+  @media #{$sm}{
+    display: none;
+  }
+}
+
+
+.credits_buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+  @media #{$sm}{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.credits_job_button {
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: $fontMuted;
+
+  @media #{$sm}{
+    display: block;
+    margin: 10px auto;
+    font-size: 0.75em;
+    box-shadow: none;
+  }
+}
+
+.cast_job_button, .crew_job_button {
+  padding: 5px 8px;
+  background: $lightSection;
+  cursor: pointer;
+  transition: all 0.1s;
+  &:hover { color: $colorSpecial; }
+
+  &.cast_job_button_active, &.crew_job_button_active {
+    background: $colorSpecial;
+    color: $lightSection;
+    cursor: auto;
+    pointer-events: none;
+  }
+
+  &.cast_job_button_disabled, &.crew_job_button_disabled {
+    cursor: auto;
+    pointer-events: none;
+    color: lighten($fontMuted, 20);
+  }
+
+  &.left {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  &.right {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}
+
+.credits_sort_button {
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: $fontMuted;
+
+  @media #{$sm}{
+    display: block;
+    margin: 10px auto;
+    font-size: 0.75em;
+    box-shadow: none;
+  }
+}
+
+.sort_popularity, .sort_date {
+  padding: 5px 8px;
+  background: $lightSection;
+  cursor: pointer;
+  transition: all 0.1s;
+
+  &:hover { color: $colorSpecial; }
+
+  &.sort_popularity_active, &.sort_date_active {
+    background: $colorSpecial;
+    color: $lightSection;
+    cursor: pointer;
+    &:hover { background: darken($colorSpecial, 10); }
+  }
+
+  &.left {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  &.right {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  @media #{$sm}{
+    padding: 5px 10px;
+  }
+}
