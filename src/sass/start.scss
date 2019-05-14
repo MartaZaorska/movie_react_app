@@ -18,10 +18,9 @@
 
 .start_content {
   position: absolute;
-  bottom: 100px;
   left: 40px;
+  bottom: 100px;
   padding: 10px;
-
   border-left: 1px solid rgba(197, 187, 187, 0.712);
 
   color: rgba(197, 187, 187, 0.712);
@@ -80,6 +79,7 @@ h1.start_title {
   text-transform: uppercase;
   letter-spacing: 1px;
   padding-left: 10px;
+  
   span {
     display: inline-block;
     padding-right: 20px;

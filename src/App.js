@@ -48,6 +48,7 @@ function App() {
           <Route exact path="/person/:id" component={Person} />
           <Route exact path="/extra" component={Extra} />
           <Route exact path="/contact" component={Contact} />
+          <Route component={Welcome} />
         </Switch>
       </main>
     </div>

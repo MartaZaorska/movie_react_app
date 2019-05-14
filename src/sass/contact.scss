@@ -74,3 +74,14 @@
   font-size: 1.2em;
   padding: 10px 0px;
 }
+
+.contact_footer {
+  color: $fontMuted;
+  font-size: 0.85em;
+  text-align: right;
+  margin-top: 40px;
+
+  @media #{$md}{
+    text-align: center;
+  }
+}

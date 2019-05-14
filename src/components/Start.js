@@ -14,19 +14,20 @@ function Start(props){
     setTimeout(() => props.history.push('/search/multi'), 450);
   }
 
-  if(!context.startMovie){
-    return <Spinner />
-  }
+  if(!context.startMovie) return <Spinner />
 
   const { startMovie, genresMovie = [] } = context;
   const { backdrop_path = "", title = "", genre_ids = [], release_date = "", id = "" } = startMovie;
+  const backgroundURL = backdrop_path ? `url(https://image.tmdb.org/t/p/w1280/${backdrop_path})` : 'none';
 
   return (
-    <article className="start_container" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backdrop_path})`}}>
+    <article className="start_container" style={{ backgroundImage: backgroundURL }}>
       <section className="start_cover">
+
         <header>
           <h3 className="start_container_title">Najbardziej oczekiwana premiera</h3>
         </header>
+
         <section className="start_content">
           <p className="start_date">{release_date}</p>
           <header>
@@ -39,7 +40,9 @@ function Start(props){
             })}
           </section>
         </section>
+
         <button className="start_button" onClick={() => handleClick()}><i className="fas fa-angle-down"></i></button>
+        
       </section>
     </article>
   )

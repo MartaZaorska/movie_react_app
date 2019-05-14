@@ -5,7 +5,7 @@
   height: auto;
   min-height: 100vh;
   display: flex;
-  padding-top: 200px;
+  padding-top: 150px;
   justify-content: center;
   align-items: flex-start;
   z-index: 16;
@@ -31,48 +31,39 @@
   width: 100%;
   height: 100%;
   position: absolute;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .spinner_wrapper .front {
   transform: translateZ(45px);
-  background: url('./img/movies.jpg') no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-image: url('/img/movies.jpg');
 }
 
 .spinner_wrapper .back {
   transform: translateZ(-45px);
-  background: url('./img/people.jpg') no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-image: url('/img/people.jpg');
 }
 
 .spinner_wrapper .top {
   transform: rotateX(-90deg) translateZ(45px);
-  background: url('./img/serials.jpg') no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-image: url('/img/serials.jpg');
 }
 
 .spinner_wrapper .down {
   transform: rotateX(90deg) translateZ(45px);
-  background: url('./img/1.jpg') no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-image: url('/img/1.jpg');
 }
 
 .spinner_wrapper .left {
   transform: rotateY(-90deg) translateZ(45px);
-  background: url('./img/2.jpg') no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-image: url('/img/2.jpg');
 }
 
 .spinner_wrapper .right {
   transform: rotateY(90deg) translateZ(45px);
-  background: url('./img/5.jpg') no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-image: url('/img/5.jpg');
 }
 
 @keyframes animationRotate

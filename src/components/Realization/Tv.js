@@ -13,9 +13,10 @@ function Tv({ element }){
   const { backdrop_path = "", created_by = [] } = base;
 
   const totalCrew = crew && created_by ? [...created_by, ...crew] : [];
+  const backgroundURL = backdrop_path ? `url(https://image.tmdb.org/t/p/w1280${backdrop_path})` : 'none'; 
 
   return (
-    <section className="realization_wrapper" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${backdrop_path})`}}>
+    <section className="realization_wrapper" style={{ backgroundImage: backgroundURL }}>
       <section className="realization_cover">
         <MainTv base={base} external_ids={external_ids} />
         <Credits crew={totalCrew} cast={cast} />

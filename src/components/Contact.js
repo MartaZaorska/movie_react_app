@@ -25,6 +25,9 @@ function Contact(){
           </p>
         </section>
       </section>
+      <footer className="contact_footer">
+        <p className="contact_copyright">&copy; Marta Zaorska {new Date().getFullYear()}</p>
+      </footer>
     </article>
   );
 }

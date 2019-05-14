@@ -176,7 +176,7 @@ li.navbar_list_item a {
 
 
 .navbar_item_movies {
-  background-image: url('img/movies.jpg');
+  background-image: url('/img/movies.jpg');
 
   ul.navbar_list {
     top: 64%;
@@ -191,7 +191,7 @@ li.navbar_list_item a {
 }
 
 .navbar_item_serials {
-  background-image: url('img/serials.jpg');
+  background-image: url('/img/serials.jpg');
 
   ul.navbar_list {
     @media #{$md}{
@@ -209,7 +209,7 @@ li.navbar_list_item a {
 }
 
 .navbar_item_people {
-  background-image: url('img/people.jpg');
+  background-image: url('/img/people.jpg');
 
   ul.navbar_list {
     top: 72%;
@@ -268,7 +268,7 @@ li.navbar_list_item a {
 
 .navbar_item_extra {
   border-right: none;
-  background-image: url('img/user.jpg');
+  background-image: url('/img/user.jpg');
 
   ul.navbar_list {
     top: 65%;

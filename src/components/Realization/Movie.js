@@ -11,7 +11,7 @@ function Movie({ element }){
   const { base = {}, videos = {}, credits = {}, external_ids = {}, images = {}, recommendations = {} } = element;
   const { crew = [], cast = [] } = credits;
   const { backdrop_path = "" } = base;
-
+  const backgroundURL = backdrop_path ? `url(https://image.tmdb.org/t/p/w1280${backdrop_path})` : 'none'; 
 
   let videoURL = false;
   if(videos && videos.results){
@@ -21,7 +21,7 @@ function Movie({ element }){
 
 
   return (
-    <section className="realization_wrapper" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${backdrop_path})`}}>
+    <section className="realization_wrapper" style={{ backgroundImage: backgroundURL }}>
       <section className="realization_cover">
         <MainMovie base={base} videoURL={videoURL} external_ids={external_ids} />
         <Credits crew={crew} cast={cast} />

@@ -17,7 +17,7 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  background: url('img/welcome.jpg');
+  background: url('/img/welcome.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -31,6 +31,10 @@
   }
 
   @media #{$sm}{
+    animation: none;
+  }
+
+  @media screen and (max-width: 640px) and (orientation: landscape){
     animation: none;
   }
 }
@@ -51,7 +55,7 @@ h1.welcome_title {
   min-height: 180px;
   background: transparent;
   font-size: 6em;
-  font-weight: 700;
+  font-weight: 800;
   color: $lightBackground;
   text-shadow: $bigTextShadow;
   letter-spacing: 1px;
