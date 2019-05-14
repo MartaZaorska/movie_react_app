@@ -20,6 +20,7 @@ function Ranking(props){
     }else if(props.match.params.type_media === 'person' && context.getRankingPerson){
       context.getRankingPerson();
     }
+    window.scroll({ left: 0, top: 0, behavior: 'smooth' });
   }, [props.match.params.type_media]);
 
   if(context.isLoading) return <Spinner />

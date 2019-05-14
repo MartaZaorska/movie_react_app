@@ -16,6 +16,7 @@ function Realization(props){
   React.useEffect(() => {
     if(context.clearSingleElement) context.clearSingleElement();
     if(context.getSingleElement) context.getSingleElement(props.match.params.type_media, props.match.params.id); 
+    window.scroll({ left: 0, top: 0, behavior: 'smooth' });
   }, [props.match.params.type_media, props.match.params.id]);
 
   if(context.isLoading) return <Spinner />

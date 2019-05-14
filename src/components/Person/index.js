@@ -16,6 +16,7 @@ function Person(props){
   React.useEffect(() => {
     if(context.clearSingleElement) context.clearSingleElement();
     if(context.getSingleElement) context.getSingleElement('person', props.match.params.id); 
+    window.scroll({ left: 0, top: 0, behavior: 'smooth' });
   }, [props.match.params.id]);
 
   if(context.isLoading) return <Spinner />
