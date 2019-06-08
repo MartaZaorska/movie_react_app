@@ -1,20 +1,28 @@
 $fontMain: 'Open Sans', sans-serif;
 
-$lightMenu: rgb(243, 243, 243);
-$lightBackground: rgb(248,248,248);
-$lightSection: rgb(255,255,255);
+$lightMenu: rgb(242, 242, 242);
+$lightBackground: rgb(248, 248, 248);
+$lightSection: rgb(255, 255, 255);
 $fontColor: rgb(29, 41, 65);
-$fontMuted: rgb(150,150,150);
+$fontMuted: rgb(150, 150, 150);
 
-$alphaGray: rgba(180,180,180,0.4);
+$alphaGray: rgba(180, 180, 180, 0.4);
 
-$colorSpecial: rgb(21, 124, 255);
-$colorSpecialAlpha: rgba(21,124,255,0.5);
+$colorSpecial: rgb(20, 122, 255);
+$colorSpecialAlpha: rgba(21, 124, 255, 0.5);
 
-$bigTextShadow: 1px 1px 1px $fontMuted, 1px 2px 1px $fontMuted, 1px 3px 1px $fontMuted, 1px 4px 1px $fontMuted, 1px 5px 1px $fontMuted, 1px 6px 1px $fontMuted, 1px 7px 1px $fontMuted, 1px 8px 1px $fontMuted, 1px 9px 1px $fontMuted, 1px 10px 1px $fontMuted, 1px 18px 6px rgba(16,16,16,0.4), 1px 22px 10px rgba(16,16,16,0.2), 1px 25px 35px rgba(16,16,16,0.2), 1px 30px 60px rgba(16,16,16,0.2);
+$bigTextShadow: 1px 1px 1px $fontMuted, 1px 2px 1px $fontMuted,
+  1px 3px 1px $fontMuted, 1px 4px 1px $fontMuted, 1px 5px 1px $fontMuted,
+  1px 6px 1px $fontMuted, 1px 7px 1px $fontMuted, 1px 8px 1px $fontMuted,
+  1px 9px 1px $fontMuted, 1px 10px 1px $fontMuted,
+  1px 18px 6px rgba(16, 16, 16, 0.4), 1px 22px 10px rgba(16, 16, 16, 0.2),
+  1px 25px 35px rgba(16, 16, 16, 0.2), 1px 30px 60px rgba(16, 16, 16, 0.2);
 
-$smallTextShadow: 1px 1px 1px $fontMuted, 1px 2px 1px $fontMuted, 1px 3px 1px $fontMuted, 1px 4px 1px $fontMuted, 1px 5px 1px $fontMuted, 1px 6px 1px $fontMuted, 1px 7px 1px $fontMuted, 1px 8px 1px $fontMuted, 1px 18px 6px rgba(16,16,16,0.4), 1px 22px 10px rgba(16,16,16,0.2), 1px 25px 35px rgba(16,16,16,0.2), 1px 30px 60px rgba(16,16,16,0.2);
-
+$smallTextShadow: 1px 1px 1px $fontMuted, 1px 2px 1px $fontMuted,
+  1px 3px 1px $fontMuted, 1px 4px 1px $fontMuted, 1px 5px 1px $fontMuted,
+  1px 6px 1px $fontMuted, 1px 7px 1px $fontMuted, 1px 8px 1px $fontMuted,
+  1px 18px 6px rgba(16, 16, 16, 0.4), 1px 22px 10px rgba(16, 16, 16, 0.2),
+  1px 25px 35px rgba(16, 16, 16, 0.2), 1px 30px 60px rgba(16, 16, 16, 0.2);
 
 @mixin strokeText($color) {
   text-stroke: 1px $color;
@@ -31,7 +39,7 @@ $smallTextShadow: 1px 1px 1px $fontMuted, 1px 2px 1px $fontMuted, 1px 3px 1px $f
   font-weight: 800;
   margin-bottom: 20px;
 
-  @media #{$xs}{
+  @media #{$xs} {
     font-size: 1.1em;
     text-align: center;
   }
@@ -49,12 +57,12 @@ $smallTextShadow: 1px 1px 1px $fontMuted, 1px 2px 1px $fontMuted, 1px 3px 1px $f
   height: auto;
   min-height: 100vh;
 
-  @media #{$lg}{
+  @media #{$lg} {
     width: calc(100% - 200px);
     margin-left: 200px;
   }
 
-  @media #{$md}{
+  @media #{$md} {
     width: calc(100% - 20px);
     margin-left: 20px;
   }
@@ -74,16 +82,26 @@ $smallTextShadow: 1px 1px 1px $fontMuted, 1px 2px 1px $fontMuted, 1px 3px 1px $f
   margin-left: 50%;
   transform: translateX(-50%);
   transition: all 0.1s;
-  box-shadow: 0px 1px 8px -2px rgba(0,0,0,0.2);
-  &:hover { background: $colorSpecial; color: $lightMenu; }
-  @media #{$lg}{ transform: translateX(-50%); }
+  box-shadow: 0px 1px 8px -2px rgba(0, 0, 0, 0.2);
+  &:hover {
+    background: $colorSpecial;
+    color: $lightMenu;
+  }
+  @media #{$lg} {
+    transform: translateX(-50%);
+  }
 
-  @media #{$xs}{ width: 95%; display: block; margin: 5px auto; transform: none;}
+  @media #{$xs} {
+    width: 95%;
+    display: block;
+    margin: 5px auto;
+    transform: none;
+  }
 }
 
-$xl: "screen and (max-width: 1200px)";
-$lg: "screen and (max-width: 992px)";
-$md: "screen and (max-width: 768px)";
-$sm: "screen and (max-width: 576px)";
-$xs: "screen and (max-width: 476px)";
-$xxs: "screen and (max-width: 300px)";
+$xl: 'screen and (max-width: 1200px)';
+$lg: 'screen and (max-width: 992px)';
+$md: 'screen and (max-width: 768px)';
+$sm: 'screen and (max-width: 576px)';
+$xs: 'screen and (max-width: 476px)';
+$xxs: 'screen and (max-width: 300px)';

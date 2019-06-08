@@ -1,0 +1,25 @@
+{
+  "short_name": "Movie App",
+  "name": "Movie Application",
+  "icons": [
+    {
+      "src": "./img/icons/app-icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/app-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/app-icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#f3f3f3",
+  "background_color": "#147aff"
+}
