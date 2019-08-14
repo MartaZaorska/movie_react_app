@@ -1,5 +1,4 @@
 import React from 'react';
-import { API_KEY } from '../keys';
 import Store from '../store';
 import {
   movieReducer,
@@ -54,7 +53,9 @@ export function Provider(props) {
   const searchElements = (type, query, page = 1) => {
     dispatch({ type: LOADING_ELEMENTS });
     fetch(
-      `https://api.themoviedb.org/3/search/${type}?api_key=${API_KEY}&language=pl-PL&query=${query}&page=${page}`
+      `https://api.themoviedb.org/3/search/${type}?api_key=${
+        process.env.REACT_APP_MOVIE_API_KEY
+      }&language=pl-PL&query=${query}&page=${page}`
     )
       .then(res => res.json())
       .then(data => {
@@ -71,7 +72,9 @@ export function Provider(props) {
   const getStartMovie = () => {
     return new Promise((resolve, reject) => {
       fetch(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=pl-PL`
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${
+          process.env.REACT_APP_MOVIE_API_KEY
+        }&language=pl-PL`
       )
         .then(res => res.json())
         .then(data => {
@@ -87,7 +90,9 @@ export function Provider(props) {
   const getGenresMovie = () => {
     return new Promise((resolve, reject) => {
       fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=pl-PL`
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${
+          process.env.REACT_APP_MOVIE_API_KEY
+        }&language=pl-PL`
       )
         .then(res => res.json())
         .then(data => {
@@ -101,7 +106,9 @@ export function Provider(props) {
     if (!state.nowPlayingMovie) {
       dispatch({ type: LOADING_ELEMENTS });
       fetch(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=pl-PL`
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${
+          process.env.REACT_APP_MOVIE_API_KEY
+        }&language=pl-PL`
       )
         .then(res => res.json())
         .then(data => {
@@ -118,7 +125,9 @@ export function Provider(props) {
     if (!state.onAirTv) {
       dispatch({ type: LOADING_ELEMENTS });
       fetch(
-        `https://api.themoviedb.org/3/tv/on_the_air?api_key=${API_KEY}&language=pl-PL`
+        `https://api.themoviedb.org/3/tv/on_the_air?api_key=${
+          process.env.REACT_APP_MOVIE_API_KEY
+        }&language=pl-PL`
       )
         .then(res => res.json())
         .then(data => {
@@ -132,7 +141,9 @@ export function Provider(props) {
   const getRankingElements = (mediaType, type, page) => {
     return new Promise((resolve, reject) => {
       fetch(
-        `https://api.themoviedb.org/3/${mediaType}/${type}?api_key=${API_KEY}&language=pl-PL&page=${page}`
+        `https://api.themoviedb.org/3/${mediaType}/${type}?api_key=${
+          process.env.REACT_APP_MOVIE_API_KEY
+        }&language=pl-PL&page=${page}`
       )
         .then(res => res.json())
         .then(data => resolve(data))
@@ -193,11 +204,18 @@ export function Provider(props) {
 
   const getPartElement = (type, media_id, part = false) => {
     let url = `https://api.themoviedb.org/3/${type}`;
-    if (!part) url += `/${media_id}?api_key=${API_KEY}&language=pl-PL`;
+    if (!part)
+      url += `/${media_id}?api_key=${
+        process.env.REACT_APP_MOVIE_API_KEY
+      }&language=pl-PL`;
     if (part && part !== 'videos')
-      url += `/${media_id}/${part}?api_key=${API_KEY}&language=pl-PL&include_image_language=en,null`;
+      url += `/${media_id}/${part}?api_key=${
+        process.env.REACT_APP_MOVIE_API_KEY
+      }&language=pl-PL&include_image_language=en,null`;
     if (part && part === 'videos')
-      url += `/${media_id}/${part}?api_key=${API_KEY}`;
+      url += `/${media_id}/${part}?api_key=${
+        process.env.REACT_APP_MOVIE_API_KEY
+      }`;
 
     return new Promise((resolve, reject) => {
       fetch(url)
