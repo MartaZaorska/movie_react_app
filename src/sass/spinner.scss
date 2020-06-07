@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import "variables.scss";
 
 .spinner_container {
   width: 100%;
@@ -11,63 +11,39 @@
   z-index: 16;
 }
 
-.spinner_perspective {
-  position: relative;
-  width: 90px;
-  height: 90px;
-  margin: 0;
-  perspective: 300px;
-}
-
 .spinner_wrapper {
   width: 100%;
   height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: animationRotate 2s linear infinite;
+  display: flex;
+  justify-content: center;
 }
 
-.spinner_wrapper > section {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+.spinner_dot {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background-color: $colorSpecial;
+  border-radius: 50%;
+  margin: 0.2em;
+  animation: bounce 0.6s infinite ease-in-out alternate;
+
+  &:nth-child(1) {
+    animation-delay: 0s;
+  }
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  &:nth-child(3) {
+    animation-delay: 0.4s;
+  }
 }
 
-.spinner_wrapper .front {
-  transform: translateZ(45px);
-  background-image: url('/img/movies.jpg');
-}
+@keyframes bounce {
+  0% {
+    transform: scale(0);
+  }
 
-.spinner_wrapper .back {
-  transform: translateZ(-45px);
-  background-image: url('/img/people.jpg');
-}
-
-.spinner_wrapper .top {
-  transform: rotateX(-90deg) translateZ(45px);
-  background-image: url('/img/serials.jpg');
-}
-
-.spinner_wrapper .down {
-  transform: rotateX(90deg) translateZ(45px);
-  background-image: url('/img/1.jpg');
-}
-
-.spinner_wrapper .left {
-  transform: rotateY(-90deg) translateZ(45px);
-  background-image: url('/img/2.jpg');
-}
-
-.spinner_wrapper .right {
-  transform: rotateY(90deg) translateZ(45px);
-  background-image: url('/img/5.jpg');
-}
-
-@keyframes animationRotate
-{
-  0% { transform:rotateX(0) rotateZ(0); }
-  100% { transform:rotateX(360deg) rotateZ(360deg); }
+  100% {
+    transform: scale(1);
+  }
 }

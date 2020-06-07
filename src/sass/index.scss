@@ -23,6 +23,7 @@ body {
   width: 100%;
   height: auto;
   font-family: $fontMain;
+  font-display: fallback;
   background: $lightBackground;
   overflow-x: hidden;
   color: $fontColor;
