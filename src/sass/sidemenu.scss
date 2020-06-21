@@ -1,22 +1,23 @@
-@import 'variables.scss';
+@import "variables.scss";
 
 .side_navbar {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 240px;
   color: $fontColor;
   background-color: $lightMenu;
   padding: 20px;
-  box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   z-index: 7;
 
-  @media #{$lg}{
+  @media #{$lg} {
     width: 200px;
     padding: 10px;
   }
 
-  @media #{$md}{
+  @media #{$md} {
     transform: translateX(-220px);
     width: 240px;
     max-width: 100%;
@@ -27,18 +28,17 @@
     }
   }
 
-  @media #{$xs}{
+  @media #{$xs} {
     width: 100%;
     padding: 20px 30px;
     transform: translateX(calc(-100% + 20px));
   }
 }
 
-
 ul.side_navbar_list {
   list-style: none;
   line-height: 1.6;
-  @media #{$sm}{
+  @media #{$sm} {
     padding-top: 30px;
   }
 }
@@ -47,25 +47,60 @@ ul.side_navbar_list li {
   font-size: 0.85em;
   padding: 5px 0px;
 
-  &.list_item.muted { font-size: 0.7em; color: $fontMuted; padding: 1px 0px; text-transform: uppercase;}
+  &.list_item.muted {
+    font-size: 0.7em;
+    color: $fontMuted;
+    padding: 1px 0px;
+    text-transform: uppercase;
+  }
 
-  &.list_item.title, &.list_item_link.title { font-size: 1.3em; color: $colorSpecial; font-weight: 800; padding-top: 1px; text-transform: uppercase; }
+  &.list_item.title,
+  &.list_item_link.title {
+    font-size: 1.3em;
+    color: $colorSpecial;
+    font-weight: 800;
+    padding-top: 1px;
+    text-transform: uppercase;
+  }
 
-  &.list_item_link.title { font-size: 0.85em; }
+  &.list_item_link.title {
+    font-size: 0.85em;
+  }
 
-  &.list_item_link.title:hover { color: lighten($colorSpecial, 15); cursor: pointer; }
+  &.list_item_link.title:hover {
+    color: lighten($colorSpecial, 15);
+    cursor: pointer;
+  }
 
-  &.vote_average { font-size: 0.8em; span.average { font-size: 1.2em; color: $colorSpecial; font-weight: 800; } }
+  &.vote_average {
+    font-size: 0.8em;
+    span.average {
+      font-size: 1.2em;
+      color: $colorSpecial;
+      font-weight: 800;
+    }
+  }
 
-  &.vote_count { padding-bottom: 15px; font-size: 0.8em; span.count { font-size: 1.2em; color: $colorSpecial; font-weight: 800; } }
+  &.vote_count {
+    padding-bottom: 15px;
+    font-size: 0.8em;
+    span.count {
+      font-size: 1.2em;
+      color: $colorSpecial;
+      font-weight: 800;
+    }
+  }
 
-  &.list_item_link a, &.list_item_link {
+  &.list_item_link a,
+  &.list_item_link {
     cursor: pointer;
     text-decoration: none;
     color: inherit;
     font-weight: 800;
     transition: all 0.1s;
-    &:hover { color: $colorSpecial; }
+    &:hover {
+      color: $colorSpecial;
+    }
   }
 }
 
@@ -93,25 +128,35 @@ ul.side_navbar_list span.line {
   cursor: pointer;
   z-index: 8;
   transition: all 0.2s;
-  &:hover { background: $colorSpecial; }
+  opacity: 0;
+  padding-top: 7px;
+  &:hover {
+    background: $colorSpecial;
+  }
 
   &.active {
     left: 225px;
-    @media #{$xs}{ left: 10px; top: 27px; }
+    @media #{$xs} {
+      left: 10px;
+      top: 27px;
+    }
   }
 
-  @media #{$md}{
+  @media #{$md} {
     display: block;
+    opacity: 1;
   }
 }
 
 .link_desktop {
-  @media #{$sm}{ display: none; }
+  @media #{$sm} {
+    display: none;
+  }
 }
 
-
 .side_navbar.person_side_navbar {
-  li.picture, li.picture_icon {
+  li.picture,
+  li.picture_icon {
     width: 120px;
     text-align: center;
     height: 120px;
@@ -121,8 +166,8 @@ ul.side_navbar_list span.line {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center 60%;
-    box-shadow: 0px 2px 20px rgba(0,0,0,0.2);
-    @media #{$xs}{
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
+    @media #{$xs} {
       margin-left: calc((100% - 120px) / 2);
     }
 
@@ -139,21 +184,36 @@ ul.side_navbar_list span.line {
     text-align: center;
     border-radius: 12px;
     margin-top: 10px;
-    box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
   }
 
-  li.muted { text-align: center; font-size: 0.75; font-weight: 400; color: $fontMuted; padding-bottom: 5px; }
-  li.list_item { font-size: 0.85em; padding-left: 15px; font-weight: 400; color: $fontMuted; }
-  li.list_item span { color: $fontColor; }
+  li.muted {
+    text-align: center;
+    font-size: 0.75;
+    font-weight: 400;
+    color: $fontMuted;
+    padding-bottom: 5px;
+  }
+  li.list_item {
+    font-size: 0.85em;
+    padding-left: 15px;
+    font-weight: 400;
+    color: $fontMuted;
+  }
+  li.list_item span {
+    color: $fontColor;
+  }
 
   li.person_socials {
     text-align: center;
-     a {
+    a {
       color: $fontMuted;
       padding: 0px 5px;
       transition: all 0.1s;
       font-size: 2em;
-      &:hover { color: $colorSpecial; }
+      &:hover {
+        color: $colorSpecial;
+      }
     }
   }
 }
